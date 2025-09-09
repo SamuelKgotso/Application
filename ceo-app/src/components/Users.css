@@ -1,0 +1,61 @@
+/* Users.css */
+
+.users-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.users-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.users-filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.users-filter label {
+  font-weight: 500;
+}
+
+.users-filter select {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.users-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.users-list th,
+.users-list td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.users-list th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.users-list tr:hover {
+  background-color: #f9f9f9;
+}
+
+.loading-text,
+.no-data {
+  font-size: 16px;
+  margin-top: 20px;
+  color: #555;
+}

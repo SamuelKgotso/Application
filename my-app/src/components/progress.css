@@ -1,0 +1,71 @@
+.process-tracker {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 2rem 0;
+  padding: 0 2rem;
+}
+
+.process-tracker::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+
+.step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.step::before {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-weight: bold;
+}
+
+.step.active::before {
+  background-color: #2196f3;
+  content: counter(step);
+}
+
+.step:not(.active)::before {
+  content: counter(step);
+  background-color: #9e9e9e;
+}
+
+.step:first-child::before {
+  counter-increment: step 1;
+}
+
+.step:nth-child(2)::before {
+  counter-increment: step 2;
+}
+
+.step:nth-child(3)::before {
+  counter-increment: step 3;
+}
+
+.step:nth-child(4)::before {
+  counter-increment: step 4;
+}
+
+.step:last-child::after {
+  counter-increment: step 5;
+}

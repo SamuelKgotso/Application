@@ -1,0 +1,277 @@
+.recommendation-form-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 35px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #3498db;
+}
+
+.form-header h2 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.recommendation-form {
+  background-color: white;
+  padding: 35px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.form-section {
+  margin-bottom: 35px;
+  padding-bottom: 25px;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.supervisor-intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+  line-height: 2.2;
+  font-size: 1.1em;
+  gap: 8px;
+}
+
+.intro-text {
+  white-space: nowrap;
+}
+
+.input-group {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0 8px;
+}
+
+.inline-input {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 8px 12px;
+  font-size: 1.1em;
+  min-width: 180px;
+  transition: all 0.3s;
+}
+
+.name-input {
+  min-width: 250px;
+}
+
+.instruction-list {
+  padding-left: 25px;
+  margin: 20px 0;
+  line-height: 1.8;
+  font-size: 1.05em;
+}
+
+.instruction-list li {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.instruction-list li .input-group {
+  margin: 0 8px;
+}
+
+.checkbox-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  padding-left: 25px;
+  font-size: 1.05em;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-option input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.recommendation-prompt {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.recommendation-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  gap: 12px;
+  font-size: 1.1em;
+}
+
+.radio-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.info-box {
+  background-color: #f8f9fa;
+  padding: 15px 20px;
+  margin: 12px 0 12px 35px;
+  border-radius: 5px;
+  font-size: 1em;
+  border-left: 4px solid #3498db;
+}
+
+.conditions-textarea, .reason-textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 12px 0 12px 35px;
+  min-height: 120px;
+  font-size: 1.05em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.signature-block {
+  padding: 20px 0;
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.signature-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.signature-item label {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.signature-item input {
+  padding: 12px;
+  font-size: 1.05em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.btn-primary {
+  padding: 15px 40px;
+  font-size: 1.2em;
+  border-radius: 6px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+/* Error styles */
+.error {
+  border-color: #e74c3c !important;
+}
+
+.error-message {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: #e74c3c;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .recommendation-form-container {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .signature-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recommendation-form-container {
+    padding: 15px;
+    margin: 10px;
+  }
+  
+  .supervisor-intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .input-group {
+    margin: 5px 0 !important;
+    width: 100%;
+  }
+  
+  .inline-input {
+    width: 100%;
+  }
+  
+  .instruction-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .instruction-list li .input-group {
+    margin: 8px 0 !important;
+    width: 100%;
+  }
+  
+  .form-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .recommendation-form {
+    padding: 20px;
+  }
+  
+  .conditions-textarea, .reason-textarea {
+    margin-left: 0;
+  }
+  
+  .intro-text {
+    white-space: normal;
+  }
+}

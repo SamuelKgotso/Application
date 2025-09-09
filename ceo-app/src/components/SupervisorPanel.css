@@ -1,0 +1,65 @@
+.supervisor-panel {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.supervisor-panel h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.supervisor-panel label {
+  font-weight: bold;
+  margin-top: 20px;
+  display: block;
+}
+
+.supervisor-panel select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.applicant-details {
+  margin-top: 25px;
+  background-color: #f0f4f8;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 5px solid #3498db;
+}
+
+.applicant-details p {
+  margin: 8px 0;
+  line-height: 1.5;
+  color: #333;
+}
+.clickable-field {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.clickable-field:hover {
+  background-color: #e8f4ff;
+}
+
+.clickable-field.saved {
+  background-color: #d4edda;
+}
+
+.saving {
+  font-size: 0.85rem;
+  color: #007bff;
+  margin-left: 5px;
+  font-style: italic;
+}
