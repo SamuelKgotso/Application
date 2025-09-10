@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
+import CombinedDashboard from "./components/CombinedDashboard";
 
 import Departments from "./components/Departments"; // you'll create this
 import Users from "./components/Users"; // you'll create this
@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <Sidebar />
+        <CombinedDashboard />
         <div className="main-content">
           <Routes>
             
