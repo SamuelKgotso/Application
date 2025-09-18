@@ -446,7 +446,7 @@ const CombinedDashboard = () => {
                       className="btn btn-primary"
                       onClick={() => navigate("/recomm")}
                     >
-                      Fill a Form
+                      Proceed
                     </button>
                   </div>
                 </div>

@@ -1,31 +1,43 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-
-import Departments from "./components/Departments"; // you'll create this
-import Users from "./components/Users"; // you'll create this
-
-import Ethics from "./components/Ethics"; 
-import EthicsForm from "./components/EthicsForm";// shared for Supervisor, Ethics, HOD
-import "./App.css";
+// App.js
+import React, { useState, useEffect } from 'react';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import AuthContext from './context/AuthContext';
+import './App.css';
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Check if user is already logged in (from localStorage)
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+    setLoading(false);
+  }, []);
+
+  const login = (userData) => {
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+  };
+
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
+
   return (
-    <Router>
-      <div className="app-container">
-        <Sidebar />
-        <div className="main-content">
-          <Routes>
-            
-            <Route path="/departments" element={<Departments />} />
-            <Route path="/users" element={<Users />} /> {/* ✅ */}
-            <Route path="/ethic" element={<Ethics />} />
-            <Route path="/ethicform" element={<EthicsForm />} />
-           
-          </Routes>
-        </div>
+    <AuthContext.Provider value={{ user, login, logout }}>
+      <div className="App">
+        {user ? <Dashboard /> : <Login />}
       </div>
-    </Router>
+    </AuthContext.Provider>
   );
 }
 
