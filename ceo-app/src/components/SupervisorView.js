@@ -4,7 +4,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from './firebase';
 import ApplicantModal from './ApplicantModal'; // Import the modal
 import './SupervisorView.css';
-import './ApplicantModal.css';
+
 
 const SupervisorView = ({ department }) => {
   const [applicants, setApplicants] = useState([]);
@@ -88,6 +88,7 @@ const SupervisorView = ({ department }) => {
                     >
                       View
                     </button>
+                    <br/>
                     <button className="action-btn evaluate">Evaluate</button>
                   </td>
                 </tr>
