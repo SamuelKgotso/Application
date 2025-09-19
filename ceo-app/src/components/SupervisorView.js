@@ -1,17 +1,19 @@
 // components/SupervisorView.js
 import React, { useState, useEffect } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from './firebase'; // Adjust import path as needed
+import { db } from './firebase';
+import ApplicantModal from './ApplicantModal'; // Import the modal
 import './SupervisorView.css';
+import './ApplicantModal.css';
 
 const SupervisorView = ({ department }) => {
   const [applicants, setApplicants] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedApplicant, setSelectedApplicant] = useState(null); // For modal
 
   useEffect(() => {
     const fetchApplicants = async () => {
       try {
-        // Query applicants where sectionA.department matches the supervisor's department
         const q = query(
           collection(db, 'applicant'),
           where('sectionA.department', '==', department)
@@ -32,13 +34,12 @@ const SupervisorView = ({ department }) => {
     fetchApplicants();
   }, [department]);
 
-  // Calculate stats from real data
   const departmentStats = {
     totalApplicants: applicants.length,
     hired: applicants.filter(app => app.status === 'Approved').length,
     rejected: applicants.filter(app => app.status === 'Rejected').length,
-    pending: applicants.filter(app => app.status === 'Pending').length,
-    openPositions: 5 // You might need to fetch this from another collection
+    pending: applicants.filter(app => !app.status || app.status === 'Pending').length,
+    openPositions: 5
   };
 
   if (loading) {
@@ -50,22 +51,7 @@ const SupervisorView = ({ department }) => {
       <h2>{department} Department Dashboard</h2>
       
       <div className="stats-cards">
-        <div className="stat-card">
-          <h3>Total Applicants</h3>
-          <p className="stat-number">{departmentStats.totalApplicants}</p>
-        </div>
-        <div className="stat-card">
-          <h3>Hired</h3>
-          <p className="stat-number">{departmentStats.hired}</p>
-        </div>
-        <div className="stat-card">
-          <h3>Rejected</h3>
-          <p className="stat-number">{departmentStats.rejected}</p>
-        </div>
-        <div className="stat-card">
-          <h3>Open Positions</h3>
-          <p className="stat-number">{departmentStats.openPositions}</p>
-        </div>
+        {/* ... stats cards code ... */}
       </div>
 
       <div className="supervisor-sections">
@@ -87,7 +73,7 @@ const SupervisorView = ({ department }) => {
                   <td>{applicant.sectionA?.firstNames} {applicant.sectionA?.surname}</td>
                   <td>{applicant.sectionA?.jobTitle}</td>
                   <td>
-                    <span className={`status ${applicant.status?.toLowerCase()}`}>
+                    <span className={`status ${applicant.status?.toLowerCase() || 'pending'}`}>
                       {applicant.status || 'Pending'}
                     </span>
                   </td>
@@ -95,7 +81,13 @@ const SupervisorView = ({ department }) => {
                     {applicant.createdAt?.toDate?.().toLocaleDateString() || 'N/A'}
                   </td>
                   <td>
-                    <button className="action-btn view">View</button>
+                    {/* Update the View button to open the modal */}
+                    <button 
+                      className="action-btn view" 
+                      onClick={() => setSelectedApplicant(applicant)}
+                    >
+                      View
+                    </button>
                     <button className="action-btn evaluate">Evaluate</button>
                   </td>
                 </tr>
@@ -104,6 +96,12 @@ const SupervisorView = ({ department }) => {
           </table>
         </section>
       </div>
+
+      {/* Add the modal */}
+      <ApplicantModal 
+        applicant={selectedApplicant} 
+        onClose={() => setSelectedApplicant(null)} 
+      />
     </div>
   );
 };
