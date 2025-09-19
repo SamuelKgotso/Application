@@ -82,8 +82,8 @@ const Login = () => {
               onChange={(e) => setDepartment(e.target.value)}
             >
               <option value="HR">HR</option>
-              <option value="Finance">Finance</option>
-              <option value="IT">IT</option>
+              <option value="FINANCE">FINANCE</option>
+              <option value="ICT">ICT</option>
               <option value="Hrm">HRM</option>
               <option value="Scm">SCM</option>
               <option value="His">HIS</option>

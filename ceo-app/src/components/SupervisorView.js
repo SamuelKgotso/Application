@@ -1,22 +1,49 @@
 // components/SupervisorView.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from './firebase'; // Adjust import path as needed
 import './SupervisorView.css';
 
 const SupervisorView = ({ department }) => {
-  // Mock data filtered by department
-  const applicants = [
-    { id: 1, name: 'John Doe', position: 'HR Specialist', status: 'Pending', date: '2023-05-15' },
-    { id: 2, name: 'Alice Johnson', position: 'Recruiter', status: 'Approved', date: '2023-05-10' },
-    { id: 3, name: 'Michael Brown', position: 'Training Coordinator', status: 'Rejected', date: '2023-05-12' },
-  ];
+  const [applicants, setApplicants] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchApplicants = async () => {
+      try {
+        // Query applicants where sectionA.department matches the supervisor's department
+        const q = query(
+          collection(db, 'applicant'),
+          where('sectionA.department', '==', department)
+        );
+        const querySnapshot = await getDocs(q);
+        const applicantsData = [];
+        querySnapshot.forEach((doc) => {
+          applicantsData.push({ id: doc.id, ...doc.data() });
+        });
+        setApplicants(applicantsData);
+      } catch (error) {
+        console.error('Error fetching applicants:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchApplicants();
+  }, [department]);
+
+  // Calculate stats from real data
   const departmentStats = {
-    totalApplicants: 24,
-    hired: 8,
-    rejected: 6,
-    pending: 10,
-    openPositions: 5
+    totalApplicants: applicants.length,
+    hired: applicants.filter(app => app.status === 'Approved').length,
+    rejected: applicants.filter(app => app.status === 'Rejected').length,
+    pending: applicants.filter(app => app.status === 'Pending').length,
+    openPositions: 5 // You might need to fetch this from another collection
   };
+
+  if (loading) {
+    return <div>Loading applicants...</div>;
+  }
 
   return (
     <div className="supervisor-view">
@@ -42,13 +69,6 @@ const SupervisorView = ({ department }) => {
       </div>
 
       <div className="supervisor-sections">
-        <section className="department-section">
-          <h3>Department Hiring Overview</h3>
-          <div className="chart-placeholder">
-            <p>Department hiring metrics chart would be displayed here</p>
-          </div>
-        </section>
-
         <section className="applicants-section">
           <h3>Applicants for {department} Department</h3>
           <table className="data-table">
@@ -64,10 +84,16 @@ const SupervisorView = ({ department }) => {
             <tbody>
               {applicants.map(applicant => (
                 <tr key={applicant.id}>
-                  <td>{applicant.name}</td>
-                  <td>{applicant.position}</td>
-                  <td><span className={`status ${applicant.status.toLowerCase()}`}>{applicant.status}</span></td>
-                  <td>{applicant.date}</td>
+                  <td>{applicant.sectionA?.firstNames} {applicant.sectionA?.surname}</td>
+                  <td>{applicant.sectionA?.jobTitle}</td>
+                  <td>
+                    <span className={`status ${applicant.status?.toLowerCase()}`}>
+                      {applicant.status || 'Pending'}
+                    </span>
+                  </td>
+                  <td>
+                    {applicant.createdAt?.toDate?.().toLocaleDateString() || 'N/A'}
+                  </td>
                   <td>
                     <button className="action-btn view">View</button>
                     <button className="action-btn evaluate">Evaluate</button>
@@ -76,7 +102,6 @@ const SupervisorView = ({ department }) => {
               ))}
             </tbody>
           </table>
-          <button className="add-applicant-btn">Add New Applicant</button>
         </section>
       </div>
     </div>
