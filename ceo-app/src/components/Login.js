@@ -88,7 +88,7 @@ const Login = () => {
               <option value="Scm">SCM</option>
               <option value="His">HIS</option>
               <option value="Theraputic">THERAPUTIC</option>
-              <option value="Clinic">CLINIC</option>
+              <option value="CLINIC">CLINIC</option>
               <option value="Excutive">EXCUTIVE</option>
               <option value="NURSING">NURSING</option>
             </select>

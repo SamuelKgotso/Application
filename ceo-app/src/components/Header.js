@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-left">
-        <h1>Company Dashboard</h1>
+        <h1>Rwops Dashboard</h1>
       </div>
       <div className="header-right">
         <span className="user-info">

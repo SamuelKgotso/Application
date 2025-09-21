@@ -1,10 +1,12 @@
 // components/Dashboard.js
 import React, { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import AdminView from './AdminView';
 import CEOView from './CEOView';
 import EthicView from './EthicView';
 import SupervisorView from './SupervisorView';
+import RecommendationForm from './RecommendationForm';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import './Dashboard.css';
@@ -21,7 +23,12 @@ const Dashboard = () => {
       case 'ethic':
         return <EthicView />;
       case 'supervisor':
-        return <SupervisorView department={user.department} />;
+        return (
+          <Routes>
+            <Route path="/" element={<SupervisorView department={user.department} />} />
+            <Route path="/recommendation-form" element={<RecommendationForm />} />
+          </Routes>
+        );
       default:
         return <div>Invalid role</div>;
     }

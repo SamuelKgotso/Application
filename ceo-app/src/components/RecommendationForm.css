@@ -275,3 +275,41 @@
     white-space: normal;
   }
 }
+/* Back button styles */
+.back-button-container {
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.btn-back:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Form action buttons */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}

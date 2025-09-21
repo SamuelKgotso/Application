@@ -1,8 +1,12 @@
 // components/ApplicantModal.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
 import './ApplicantModal.css';
 
 const ApplicantModal = ({ applicant, onClose }) => {
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const [daysOfWeek, setDaysOfWeek] = useState([]);
   const [declarationItems, setDeclarationItems] = useState([]);
   
@@ -62,6 +66,15 @@ const ApplicantModal = ({ applicant, onClose }) => {
       setDeclarationItems(itemsWithStatus);
     }
   }, [applicant]);
+
+  const handleProceed = () => {
+    // Store the applicant document ID in localStorage
+    localStorage.setItem('applicantDocId', applicant.id);
+    // Navigate to the RecommendationForm
+    navigate('/recommendation-form');
+    // Close the modal
+    onClose();
+  };
 
   if (!applicant) return null;
 
@@ -265,9 +278,9 @@ const ApplicantModal = ({ applicant, onClose }) => {
         </div>
 
         <div className="modal-footer">
-          <button className="action-btn evaluate">
+          <button className="action-btn evaluate" onClick={handleProceed}>
             <span className="btn-icon">📋</span>
-            Evaluate Application
+            Proceed
           </button>
           <button className="action-btn close" onClick={onClose}>
             <span className="btn-icon">✕</span>

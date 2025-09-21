@@ -1,5 +1,6 @@
 // App.js
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import AuthContext from './context/AuthContext';
@@ -34,9 +35,11 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
-      <div className="App">
-        {user ? <Dashboard /> : <Login />}
-      </div>
+      <Router>
+        <div className="App">
+          {user ? <Dashboard /> : <Login />}
+        </div>
+      </Router>
     </AuthContext.Provider>
   );
 }
