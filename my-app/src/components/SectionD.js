@@ -103,7 +103,8 @@ export default function SectionD() {
       });
 
       // Redirect to home page after successful submission
-      navigate("/", { state: { message: "Successfully submitted!" } });
+      console.log("✅ Section D updated for ID:", applicantId);
+       navigate("/appform/section-f");
     } catch (error) {
       console.error("❌ Error saving Section D:", error);
       alert("Failed to save Section D. Please try again.");
