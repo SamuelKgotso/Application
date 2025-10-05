@@ -103,12 +103,18 @@ export default function SectionD() {
         status: "section_d_completed"
       });
 
+<<<<<<< HEAD
       // ✅ Redirect to Section E (Document Upload) after successful submission
       navigate("/appform/section-f", { 
         state: { 
           message: "Section D submitted successfully! Now upload your documents." 
         } 
       });
+=======
+      // Redirect to home page after successful submission
+      console.log("✅ Section D updated for ID:", applicantId);
+       navigate("/appform/section-f");
+>>>>>>> c5858224f89e56456b803fc7c7eba4f6c24f0df4
     } catch (error) {
       console.error("❌ Error saving Section D:", error);
       alert("Failed to save Section D. Please try again.");
