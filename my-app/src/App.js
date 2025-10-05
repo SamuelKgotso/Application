@@ -21,11 +21,13 @@ import Dashboard from "./components/Dashboard";
 import DepartmentSelection from "./components/DepartmentSelection";
 import ApplicantDash from "./components/ApplicantDash";
 
+
 // Section components
 import SectionA from "./components/SectionA";
 import SectionB from "./components/SectionB";
 import SectionC from "./components/SectionC";
 import SectionD from "./components/SectionD";
+import SectionF from "./components/SectionF";
 
 function App() {
   return (
@@ -43,6 +45,7 @@ function App() {
           <Route path="/appform/section-b" element={<ApplicantDash currentSection="B" />} />
           <Route path="/appform/section-c" element={<ApplicantDash currentSection="C" />} />
           <Route path="/appform/section-d" element={<ApplicantDash currentSection="D" />} />
+          <Route path="/appform/section-f" element={<ApplicantDash currentSection="F" />} />
           <Route path="/appform/step3" element={<DepartmentSelection />} />
 
           {/* Section forms */}
@@ -50,6 +53,7 @@ function App() {
           <Route path="/appform/section-b" element={<SectionB />} />
           <Route path="/appform/section-c" element={<SectionC />} />
           <Route path="/appform/section-d" element={<SectionD />} />
+          <Route path="/appform/section-f" element={<SectionF />} />
 
           {/* Other forms */}
           <Route path="/applicant-form" element={<ApplicantForm />} />

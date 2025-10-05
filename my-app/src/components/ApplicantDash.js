@@ -4,6 +4,7 @@ import SectionA from "./SectionA";
 import SectionB from "./SectionB";
 import SectionC from "./SectionC";
 import SectionD from "./SectionD";
+import SectionF from "./SectionF";
 import "./Dashboard.css";
 
 export default function ApplicantDash({ currentSection }) {
@@ -12,6 +13,7 @@ export default function ApplicantDash({ currentSection }) {
     { label: "Section B", id: "B" },
     { label: "Section C", id: "C" },
     { label: "Section D", id: "D" },
+    { label: "Section F", id: "F" },
   ];
 
   const renderSectionForm = () => {
@@ -24,6 +26,8 @@ export default function ApplicantDash({ currentSection }) {
         return <SectionC />;
       case "D":
         return <SectionD />;
+      case "F":
+        return <SectionF />;
       default:
         return <p>No application started yet.</p>;
     }

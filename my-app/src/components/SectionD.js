@@ -87,7 +87,7 @@ export default function SectionD() {
     }
   };
 
-  // ✅ Submit Section D - UPDATED TO REDIRECT TO HOME
+  // ✅ Submit Section D - UPDATED TO REDIRECT TO SECTION E
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -100,10 +100,15 @@ export default function SectionD() {
       await updateDoc(docRef, {
         sectionD: formData,
         updatedAt: serverTimestamp(),
+        status: "section_d_completed"
       });
 
-      // Redirect to home page after successful submission
-      navigate("/", { state: { message: "Successfully submitted!" } });
+      // ✅ Redirect to Section E (Document Upload) after successful submission
+      navigate("/appform/section-f", { 
+        state: { 
+          message: "Section D submitted successfully! Now upload your documents." 
+        } 
+      });
     } catch (error) {
       console.error("❌ Error saving Section D:", error);
       alert("Failed to save Section D. Please try again.");
