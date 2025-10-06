@@ -43,11 +43,8 @@ function App() {
           <Route path="/appform/section-b" element={<ApplicantDash currentSection="B" />} />
           <Route path="/appform/section-c" element={<ApplicantDash currentSection="C" />} />
           <Route path="/appform/section-d" element={<ApplicantDash currentSection="D" />} />
-<<<<<<< HEAD
           {/* Section F handled by separate component */}
           <Route path="/appform/section-f" element={<SectionF />} />
-=======
->>>>>>> ab4833d (Resolved merge conflict in App.js)
           <Route path="/appform/step3" element={<DepartmentSelection />} />
 
           {/* Section forms */}
@@ -55,7 +52,6 @@ function App() {
           <Route path="/appform/section-b" element={<SectionB />} />
           <Route path="/appform/section-c" element={<SectionC />} />
           <Route path="/appform/section-d" element={<SectionD />} />
-          <Route path="/appform/section-f" element={<SectionF />} />
 
           {/* Other forms */}
           <Route path="/applicant-form" element={<ApplicantForm />} />
