@@ -21,7 +21,6 @@ import Dashboard from "./components/Dashboard";
 import DepartmentSelection from "./components/DepartmentSelection";
 import ApplicantDash from "./components/ApplicantDash";
 
-
 // Section components
 import SectionA from "./components/SectionA";
 import SectionB from "./components/SectionB";
@@ -45,11 +44,8 @@ function App() {
           <Route path="/appform/section-b" element={<ApplicantDash currentSection="B" />} />
           <Route path="/appform/section-c" element={<ApplicantDash currentSection="C" />} />
           <Route path="/appform/section-d" element={<ApplicantDash currentSection="D" />} />
-<<<<<<< HEAD
-          <Route path="/appform/section-f" element={<ApplicantDash currentSection="F" />} />
-=======
-          {/* ⚡ removed ApplicantDash route for section-f so redirect loads SectionF form */}
->>>>>>> c5858224f89e56456b803fc7c7eba4f6c24f0df4
+          {/* Section F handled by separate component */}
+          <Route path="/appform/section-f" element={<SectionF />} />
           <Route path="/appform/step3" element={<DepartmentSelection />} />
 
           {/* Section forms */}
